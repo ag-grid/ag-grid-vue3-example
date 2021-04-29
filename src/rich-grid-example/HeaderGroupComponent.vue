@@ -1,44 +1,3 @@
-<template>
-  <div>
-    <div class="customHeaderLabel"> {{ params.displayName }}</div>
-    <div @click="expandOrCollapse"
-         :class="expandOrCollapseClass">
-      <i class="fa fa-arrow-right"></i>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      expanded: false
-    }
-  },
-  computed: {
-    expandOrCollapseClass: function () {
-      return {
-        'customExpandButton expanded': this.expanded,
-        'customExpandButton collapsed': !this.expanded
-      }
-    }
-  },
-  methods: {
-    expandOrCollapse() {
-      this.params.setExpanded(!this.expanded);
-    },
-
-    onExpandChanged() {
-      console.log(this.params);
-      this.expanded = this.params.columnGroup.getOriginalColumnGroup().isExpanded()
-    }
-  },
-  mounted() {
-    this.params.columnGroup.getOriginalColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
-  }
-}
-</script>
-
 <style scoped>
 .customHeaderLabel {
   margin-left: 5px;
@@ -99,3 +58,45 @@ export default {
   }
 }
 </style>
+
+<template>
+  <div>
+    <div class="customHeaderLabel"> {{ params.displayName }}</div>
+    <div @click="expandOrCollapse"
+         :class="expandOrCollapseClass">
+      <i class="fa fa-arrow-right"></i>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      expanded: false
+    }
+  },
+  computed: {
+    expandOrCollapseClass: function () {
+      return {
+        'customExpandButton expanded': this.expanded,
+        'customExpandButton collapsed': !this.expanded
+      }
+    }
+  },
+  methods: {
+    expandOrCollapse() {
+      this.params.setExpanded(!this.expanded);
+    },
+
+    onExpandChanged() {
+      console.log(this.params);
+      this.expanded = this.params.columnGroup.getOriginalColumnGroup().isExpanded()
+    }
+  },
+  mounted() {
+    this.params.columnGroup.getOriginalColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
+  }
+}
+</script>
+
