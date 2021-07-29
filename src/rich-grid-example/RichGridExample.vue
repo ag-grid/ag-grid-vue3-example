@@ -85,7 +85,7 @@
 
 <script>
     import {AgGridVue} from "@ag-grid-community/vue3";
-    // for community features
+    //  for community features
     // import {AllCommunityModules} from "@ag-grid-community/all-modules";
 
     // for enterprise features
