@@ -71,7 +71,7 @@ export default {
                 return null;
             }
 
-            if (date.getDate() != day || date.getMonth() + 1 != month || date.getFullYear() != year) {
+            if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
                 return null;
             }
             return date;
@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .filter {
     margin: 2px
 }
