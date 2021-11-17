@@ -30,11 +30,11 @@
 
             onExpandChanged() {
                 console.log(this.params);
-                this.expanded = this.params.columnGroup.getOriginalColumnGroup().isExpanded()
+                this.expanded = this.params.columnGroup.getProvidedColumnGroup().isExpanded()
             }
         },
         mounted() {
-            this.params.columnGroup.getOriginalColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
+            this.params.columnGroup.getProvidedColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         }
     }
 </script>
