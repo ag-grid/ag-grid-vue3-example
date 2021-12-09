@@ -29,12 +29,11 @@
             },
 
             onExpandChanged() {
-                console.log(this.params.columnGroup);
-                this.expanded = this.params.columnGroup.originalColumnGroup.isExpanded()
+                this.expanded = this.params.columnGroup.getProvidedColumnGroup().isExpanded()
             }
         },
         mounted() {
-            this.params.columnGroup.originalColumnGroup.addEventListener('expandedChanged', this.onExpandChanged.bind(this));
+            this.params.columnGroup.getProvidedColumnGroup().addEventListener('expandedChanged', this.onExpandChanged.bind(this));
         }
     }
 </script>
