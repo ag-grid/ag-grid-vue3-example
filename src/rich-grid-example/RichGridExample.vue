@@ -193,15 +193,15 @@
                                 headerName: "Skills",
                                 width: 125,
                                 sortable: false,
-                                cellRenderer: skillsCellRenderer,
-                                filter: SkillFilter
+                                cellRendererComp: skillsCellRenderer,
+                                filterComp: SkillFilter
                             },
                             {
                                 headerName: "Proficiency",
                                 field: "proficiency",
                                 width: 120,
-                                cellRenderer: percentCellRenderer,
-                                filter: ProficiencyFilter
+                                cellRendererComp: percentCellRenderer,
+                                filterComp: ProficiencyFilter
                             },
                         ]
                     },
@@ -212,15 +212,15 @@
                                 headerName: "Mobile",
                                 field: "mobile",
                                 width: 150,
-                                filter: 'text',
-                                cellRendererFramework: 'CellComponentRenderer'
+                                filterComp: 'text',
+                                cellRendererComp: 'CellComponentRenderer'
                             },
                             {
                                 headerName: "Land-line",
                                 field: "landline",
                                 width: 150,
-                                filter: 'text',
-                                cellRendererFramework: 'CellComponentRenderer2'
+                                filterComp: 'text',
+                                cellRendererComp: 'CellComponentRenderer2'
                             },
                             {headerName: "Address", field: "address", width: 500, filter: 'text'}
                         ]
