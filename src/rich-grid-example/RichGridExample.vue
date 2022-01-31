@@ -160,7 +160,7 @@
                     },
                     {
                         headerName: 'Employee',
-                        headerGroupComponentFramework: HeaderGroupComponent,
+                        headerGroupComponent: HeaderGroupComponent,
                         children: [
                             {
                                 headerName: "Name", field: "name", editable: true,
@@ -193,15 +193,15 @@
                                 headerName: "Skills",
                                 width: 125,
                                 sortable: false,
-                                cellRendererComp: skillsCellRenderer,
-                                filterComp: SkillFilter
+                                cellRenderer: skillsCellRenderer,
+                                filter: SkillFilter
                             },
                             {
                                 headerName: "Proficiency",
                                 field: "proficiency",
                                 width: 120,
-                                cellRendererComp: percentCellRenderer,
-                                filterComp: ProficiencyFilter
+                                cellRenderer: percentCellRenderer,
+                                filter: ProficiencyFilter
                             },
                         ]
                     },
@@ -212,15 +212,15 @@
                                 headerName: "Mobile",
                                 field: "mobile",
                                 width: 150,
-                                filterComp: 'text',
-                                cellRendererComp: 'CellComponentRenderer'
+                                filter: 'text',
+                                cellRenderer: 'CellComponentRenderer'
                             },
                             {
                                 headerName: "Land-line",
                                 field: "landline",
                                 width: 150,
-                                filterComp: 'text',
-                                cellRendererComp: 'CellComponentRenderer2'
+                                filter: 'text',
+                                cellRenderer: 'CellComponentRenderer2'
                             },
                             {headerName: "Address", field: "address", width: 500, filter: 'text'}
                         ]
