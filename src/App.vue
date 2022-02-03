@@ -12,11 +12,11 @@
 </template>
 <script>
 
-export default {
-    computed: {
-        routes() {
-            return this.$router.getRoutes()
+    export default {
+        computed: {
+            routes() {
+                return this.$router.getRoutes()
+            }
         }
     }
-}
 </script>

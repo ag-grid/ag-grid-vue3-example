@@ -85,9 +85,6 @@
 
 <script>
     import {AgGridVue} from "@ag-grid-community/vue3";
-    // for community features
-    // import {AllCommunityModules} from "@ag-grid-community/all-modules";
-
     // for enterprise features
     import {AllModules} from "@ag-grid-enterprise/all-modules";
 
@@ -98,6 +95,8 @@
     import CellComponentRenderer from './CellComponentRenderer.vue';
     import CellComponentEditor from './CellComponentEditor.vue';
     import RefData from './refData'
+    // for community features
+    // import {AllCommunityModules} from "@ag-grid-community/all-modules";
 
     export default {
         data() {
@@ -164,7 +163,7 @@
                         children: [
                             {
                                 headerName: "Name", field: "name", editable: true,
-                                width: 150, pinned: true, cellEditorFramework: 'CellComponentEditor'
+                                width: 150, pinned: true, cellEditor: 'CellComponentEditor'
                             },
                             {
                                 headerName: "Country", field: "country", width: 150,
@@ -313,7 +312,7 @@
         },
         beforeMount() {
             this.gridOptions = {};
-            this.gridOptions.frameworkComponents = { agDateInput: DateComponent };
+            this.gridOptions.components = {agDateInput: DateComponent};
             this.createRowData();
             this.createColumnDefs();
             this.showGrid = true;
