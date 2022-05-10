@@ -6,6 +6,7 @@
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && npm run hash",
+    "build-prod": "npm run build",
     "hash": "sh ./hashDirectory.sh > .hash",
     "test:tbd": "vue-cli-service test:unit --env=jest-environment-jsdom-fourteen"
   },
