@@ -1,25 +1,26 @@
 {
   "name": "ag-grid-vue3-example",
-  "version": "27.2.0",
+  "version": "27.3.0",
   "private": true,
   "scripts": {
     "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build && npm run hash",
+    "build-prod": "npm run build",
     "hash": "sh ./hashDirectory.sh > .hash",
     "test:tbd": "vue-cli-service test:unit --env=jest-environment-jsdom-fourteen"
   },
   "dependencies": {
-    "@ag-grid-community/all-modules": "~27.2.0",
-    "@ag-grid-community/client-side-row-model": "~27.2.0",
-    "@ag-grid-community/core": "~27.2.0",
-    "@ag-grid-community/csv-export": "~27.2.0",
-    "@ag-grid-community/infinite-row-model": "~27.2.0",
-    "@ag-grid-community/vue3": "~27.2.0",
-    "@ag-grid-enterprise/all-modules": "~27.2.0",
+    "@ag-grid-community/all-modules": "~27.3.0",
+    "@ag-grid-community/client-side-row-model": "~27.3.0",
+    "@ag-grid-community/core": "~27.3.0",
+    "@ag-grid-community/csv-export": "~27.3.0",
+    "@ag-grid-community/infinite-row-model": "~27.3.0",
+    "@ag-grid-community/vue3": "~27.3.0",
+    "@ag-grid-enterprise/all-modules": "~27.3.0",
     "bootstrap": "4.5.0",
-    "vue": "3.2.32",
-    "vue-router": "4.0.14"
+    "vue": "3.2.33",
+    "vue-router": "4.0.15"
   },
   "devDependencies": {
     "@vue/babel-preset-app": "5.0.4",
@@ -27,7 +28,7 @@
     "@vue/cli-plugin-eslint": "5.0.4",
     "@vue/cli-plugin-unit-jest": "5.0.4",
     "@vue/cli-service": "5.0.4",
-    "@vue/compiler-sfc": "3.2.32",
+    "@vue/compiler-sfc": "3.2.33",
     "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-vue": "7.6.0"
