@@ -24,8 +24,7 @@ module.exports = {
             .loader('vue-loader')
             .tap(options => {
                 options.compilerOptions = {
-                    ...(options.compilerOptions || {}),
-                    isCustomElement: tag => tag === 'ag-grid-column'
+                    ...(options.compilerOptions || {}),                    
                 };
                 return options;
             });
