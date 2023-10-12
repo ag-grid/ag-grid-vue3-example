@@ -1,13 +1,8 @@
 <template>
-    <span class="cell">{{ params.value }}</span>
+  {{ value }}
 </template>
 
-<script>
-    export default {};
+<script lang="jsx" setup>
+const props = defineProps({params: Object})
+const {value} = props.params;
 </script>
-
-<style scoped>
-    .cell {
-        color: blue;
-    }
-</style>

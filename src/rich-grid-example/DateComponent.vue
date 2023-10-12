@@ -1,108 +1,109 @@
 <template>
-    <div class="filter">
-        <span class="reset" @click="onResetDate()">x</span>
-        <input class="dd" @change="onDateChanged('dd', $event)" placeholder="dd" v-model="dd"
-               maxLength="2"/>/
-        <input class="mm" @change="onDateChanged('mm', $event)" placeholder="mm" v-model="mm"
-               maxLength="2"/>/
-        <input class="yyyy" @change="onDateChanged('yyyy', $event)" placeholder="yyyy" v-model="yyyy"
-               maxLength="4"/>
-    </div>
+  <div class="filter">
+    <span class="reset" @click="onResetDate()">x</span>
+    <input v-model="dd" class="dd" maxLength="2" placeholder="dd"
+           @change="onDateChanged('dd', $event)"/>/
+    <input v-model="mm" class="mm" maxLength="2" placeholder="mm"
+           @change="onDateChanged('mm', $event)"/>/
+    <input v-model="yyyy" class="yyyy" maxLength="4" placeholder="yyyy"
+           @change="onDateChanged('yyyy', $event)"/>
+  </div>
 </template>
 
-<script>
+<script setup>
+import {ref} from 'vue';
 
-    export default {
-        data() {
-            return {
-                date: null,
-                dd: '',
-                mm: '',
-                yyyy: ''
-            }
-        },
-        methods: {
-            onResetDate() {
-                this.dd = '';
-                this.mm = '';
-                this.yyyy = '';
-                this.date = null;
-                this.params.onDateChanged();
-            },
+const props = defineProps({params: Object})
 
-            onDateChanged(on, $event) {
-                let targetValue = $event.target.value;
-                this.date = this.parseDate(
-                    on === 'dd' ? targetValue : this.dd,
-                    on === 'mm' ? targetValue : this.mm,
-                    on === 'yyyy' ? targetValue : this.yyyy
-                );
-                this.params.onDateChanged();
-            },
+const date = ref(null);
+const dd = ref('');
+const mm = ref('');
+const yyyy = ref('');
 
-            getDate() {
-                return this.date;
-            },
+const onResetDate = () => {
+  dd.value = '';
+  mm.value = '';
+  yyyy.value = '';
+  date.value = null;
+  props.params.onDateChanged();
+}
 
-            setDate(date) {
-                if (!date) return;
+const onDateChanged = (on, $event) => {
+  let targetValue = $event.target.value;
+  date.value = parseDate(
+      on === 'dd' ? targetValue : dd.value,
+      on === 'mm' ? targetValue : mm.value,
+      on === 'yyyy' ? targetValue : yyyy.value
+  );
+  props.params.onDateChanged();
+}
 
-                this.dd = date.getDate() + '';
-                this.mm = (date.getMonth() + 1) + '';
-                this.yyyy = date.getFullYear() + '';
-                this.date = date;
-                this.params.onDateChanged();
-            },
+const getDate = () => {
+  return date.value;
+}
 
-            parseDate(dd, mm, yyyy) {
-                //If any of the three input date fields are empty, stop and return null
-                if (dd.trim() === '' || mm.trim() === '' || yyyy.trim() === '') {
-                    return null;
-                }
+const setDate = (date) => {
+  if (!date) return;
 
-                let day = Number(dd);
-                let month = Number(mm);
-                let year = Number(yyyy);
+  dd.value = date.getDate() + '';
+  mm.value = (date.getMonth() + 1) + '';
+  yyyy.value = date.getFullYear() + '';
+  date.value = date;
+  props.params.onDateChanged();
+}
 
-                let date = new Date(year, month - 1, day);
+const parseDate = (dd, mm, yyyy) => {
+  //If any of the three input date fields are empty, stop and return null
+  if (dd.trim() === '' || mm.trim() === '' || yyyy.trim() === '') {
+    return null;
+  }
 
-                //If the date is not valid
-                if (isNaN(date.getTime())) {
-                    return null;
-                }
+  let day = Number(dd);
+  let month = Number(mm);
+  let year = Number(yyyy);
 
-                if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
-                    return null;
-                }
-                return date;
-            }
-        }
-    }
+  let date = new Date(year, month - 1, day);
+
+  //If the date is not valid
+  if (isNaN(date.getTime())) {
+    return null;
+  }
+
+  if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
+    return null;
+  }
+  return date;
+}
+
+defineExpose({
+  getDate,
+  setDate
+})
 </script>
 
 <style>
-    .filter {
-        margin: 2px
-    }
+.filter {
+  margin: 2px
+}
 
-    .dd {
-        width: 30px
-    }
+.dd {
+  width: 30px
+}
 
-    .mm {
-        width: 30px
-    }
+.mm {
+  width: 30px
+}
 
-    .yyyy {
-        width: 60px
-    }
+.yyyy {
+  width: 60px
+}
 
-    .reset {
-        padding: 2px;
-        background-color: red;
-        border-radius: 3px;
-        font-size: 10px;
-        margin-right: 5px;
-        color: white
-    }
+.reset {
+  padding: 2px;
+  background-color: red;
+  border-radius: 3px;
+  font-size: 10px;
+  margin-right: 5px;
+  color: white
+}
 </style>
