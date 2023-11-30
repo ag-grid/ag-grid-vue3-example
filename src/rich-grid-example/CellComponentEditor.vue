@@ -1,48 +1,40 @@
 <template>
-    <input :ref="'input'" v-model="value"/>
+  <input ref="inputRef" v-model="value"/>
 </template>
 
-<script>
-    import {nextTick} from 'vue';
+<script setup>
+import {ref, nextTick, onMounted} from 'vue';
 
-    export default {
-        data() {
-            return {
-                value: '',
-                cancelBeforeStart: true,
-                highlightAllOnFocus: true
-            };
-        },
-        methods: {
-            getValue() {
-                return `[[${this.value}]]`;
-            },
+const props = defineProps({params: Object})
 
-            isCancelBeforeStart() {
-                return false;
-            },
+const inputRef = ref(null);
 
-            isCancelAfterEnd() {
-                return false;
-            }
-        },
+const value = ref();
+const cancelBeforeStart = ref(true);
+const highlightAllOnFocus = ref(true);
 
-        created() {
-            this.value = this.params.value;
-        },
-        mounted() {
-            nextTick(() => {
-                // need to check if the input reference is still valid - if the edit was cancelled before it started there
-                // wont be an editor component anymore
-                if (this.$refs.input) {
-                    this.$refs.input.focus();
-                }
-            });
-        }
+const getValue = () => {
+  return `${value.value} (edited)`;
+}
+
+const isCancelBeforeStart = () => {
+  return false;
+}
+
+const isCancelAfterEnd = () => {
+  return false;
+}
+
+onMounted(() => {
+  value.value = props.params.value;
+
+  nextTick(() => {
+    // need to check if the input reference is still valid - if the edit was cancelled before it started there
+    // wont be an editor component anymore
+    if (inputRef.value) {
+      inputRef.value.focus();
     }
+  });
+});
 </script>
-
-<style scoped>
-</style>
-
 
