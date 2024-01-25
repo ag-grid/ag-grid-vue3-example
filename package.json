@@ -1,6 +1,6 @@
 {
   "name": "ag-grid-vue3-example",
-  "version": "31.0.2",
+  "version": "31.0.3",
   "private": true,
   "scripts": {
     "start": "npm run serve",
@@ -10,10 +10,10 @@
     "test:tbd": "vue-cli-service test:unit --env=jest-environment-jsdom-fourteen"
   },
   "dependencies": {
-    "@ag-grid-community/client-side-row-model": "~31.0.2",
-    "@ag-grid-community/core": "~31.0.2",
-    "@ag-grid-community/vue3": "~31.0.2",
-    "@ag-grid-community/styles": "~31.0.2",
+    "@ag-grid-community/client-side-row-model": "~31.0.3",
+    "@ag-grid-community/core": "~31.0.3",
+    "@ag-grid-community/vue3": "~31.0.3",
+    "@ag-grid-community/styles": "~31.0.3",
     "bootstrap": "4.5.0",
     "vue": "3.2.33"
   },
